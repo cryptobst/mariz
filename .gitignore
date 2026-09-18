@@ -1,0 +1,57 @@
+# ============================================================
+# OpenCart 3.0.2.0 project (custom site: mariz)
+# Web root is www/, storage/ lives outside the web root.
+# ============================================================
+
+# ---- Secrets / environment-specific config ----
+# Commit *-dist.php templates instead; never the live configs
+# (they contain DB credentials and machine-specific URLs).
+www/config.php
+www/admin/config.php
+
+# ---- OpenCart storage: runtime-generated data ----
+storage/cache/
+storage/download/
+storage/logs/
+storage/modification/
+storage/session/
+storage/upload/
+# Same, for OpenCart's DEFAULT storage location (leftovers from production)
+www/system/storage/cache/
+www/system/storage/download/
+www/system/storage/logs/
+www/system/storage/modification/
+www/system/storage/session/
+www/system/storage/upload/
+# NOTE: storage/vendor/ IS tracked on purpose - OpenCart 3.0.2.0
+# ships its dependencies there (twig, scssphp, ...) so the repo
+# is self-contained. Remove the comment on the next line only if
+# your team manages dependencies with composer instead:
+# storage/vendor/
+
+# ---- Uploaded user media ----
+# Product images stay tracked (part of the site as-is);
+# only the auto-generated thumbnails are ignored.
+www/image/cache/
+
+# ---- OpenCart installer (deleted on live servers; don't version) ----
+www/install/
+
+# ---- Database dumps (large + contains customer data) ----
+MYSQL_DUMP_*.sql
+
+# ---- Machine-specific local setup (IIS/PHP paths of this PC) ----
+setup/
+www/php.ini
+
+# ---- IIS artifacts ----
+www/aspnet_client/
+
+# ---- OS junk / IDE / logs ----
+Thumbs.db
+.DS_Store
+*.log
+.vs/
+.vscode/
+.idea/
+node_modules/

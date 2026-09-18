@@ -1,0 +1,41 @@
+<style type="text/css">
+    .overlay-anchor{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<section class="gb-products padding-top-100 padding-bottom-100">
+    <div class="container">
+        <div class="main-titles">
+            <h5 class="subtitle {{code}}">{% if code == 'el-gr' %} Το {% else %} Our special {% endif %}</h5>
+            <h1 data-name="{% if code == 'el-gr' %} Μενου Μας {% else %} menu {% endif %}" class="title"> <span>{% if code == 'el-gr' %} Μενου Μας {% else %} menu {% endif %}</span></h1></div>
+        <div class="main-content">
+            <div class="list-blogs column-3">
+                {% for product in products %}
+                <div class="item">
+                    <div class="product-thumb">                        
+                        <div class="image">
+                            <div class="overlay featuredMenu"  style="cursor:pointer">
+                                <a href="{{ product.href }}" class="overlay-anchor"></a>
+                                <h4 class="text-center" style="margin-top: 25%;"><a href="{{ product.href }}">{{ product.name }}</a></h4>
+                                <p class="text-center" class="price">
+                                    {% if not product.special %} {{ product.price }} {% else %}
+                                    <span class="price"><a href="{{ product.href }}">
+                                        <ins>{{ product.special }}</ins>
+                                        <del>{{ product.price }}</del> 
+                                        </a>               
+                                    </span> {% endif %}
+                                </p>
+                                <div class="text-center">
+                                    <button style="margin-left: 0;" type="button" class="add-to-cart-btn" onclick="cart.add('{{ product.product_id }}', '{{ product.minimum }}');"><i class="fa fa-shopping-cart"></i></button>
+                                </div>
+                            </div>
+                            <a href="{{ product.href }}"><img style="margin: 0 auto;" src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+</section>

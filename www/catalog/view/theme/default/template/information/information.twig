@@ -1,0 +1,32 @@
+{{ header }} {#
+<div id="information-information" class="container">
+    <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+    </ul>
+    <div class="row">{{ column_left }} {% if column_left and column_right %} {% set class = 'col-sm-6' %} {% elseif column_left or column_right %} {% set class = 'col-sm-9' %} {% else %} {% set class = 'col-sm-12' %} {% endif %}
+        <div id="content" class="{{ class }}">{{ content_top }}
+            <h1>{{ heading_title }}</h1> {{ description }}{{ content_bottom }}</div>
+        {{ column_right }}</div>
+</div> #}
+<section class="gb-banner {{ meta_title }}">
+    <div class="container">
+        <div class="morepage-banner">
+            <h2 class="title">{{ heading_title }}</h2>
+            <ol class="breadcrumb">
+                {% for breadcrumb in breadcrumbs %}
+                <li><a href="{{ breadcrumb.href }}" class="link">{{ breadcrumb.text }}</a></li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+</section>
+<div class="gb-about-us {{ meta_title == 'Services' ? '' : 'padding-top-100 padding-bottom-100' }}">
+    <div class="{{ meta_title == 'Services' ? 'container-fluid' : 'container' }}">
+        <div class="main-content">
+            {{ description }}
+        </div>
+    </div>
+</div>
+{{ footer }}

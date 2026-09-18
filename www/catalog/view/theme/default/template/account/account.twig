@@ -1,0 +1,35 @@
+{{ header }}
+<div id="account-account" class="container">
+    {% if success %}
+    <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}</div>
+    {% endif %}
+    <div class="row">
+        <div id="content" class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="box-holder box-holder-gold  pull-right">
+                        <h2 class="acc-title">{{ text_my_account }}</h2>
+                        <ul class="list-unstyled show-on-hover">
+                            <li><a href="{{ edit }}">{{ text_edit }}</a></li>
+                            <li><a href="{{ password }}">{{ text_password }}</a></li>
+                            <li><a href="{{ address }}">{{ text_address }}</a></li>
+                            <li><a href="{{ newsletter }}">{{ text_newsletter }}</a></li>
+                            <li><a href="{{ logout }}">{{ text_logout }}</a></li>
+                        </ul>
+                        <div class="ico-holder"><img src="image/catalog/end_of_list.png" /></div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="box-holder box-holder-gold">
+                        <h2 class="acc-title">{{ text_my_orders }}</h2>
+                        <ul class="list-unstyled show-on-hover">
+                            <li><a href="{{ order }}">{{ text_order }}</a></li> 
+                        </ul>
+                        <div class="ico-holder" style="width:400px;"><img src="image/catalog/end_of_list.png" /></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ footer }}

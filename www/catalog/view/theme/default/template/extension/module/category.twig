@@ -1,0 +1,18 @@
+<div class="col-md-12 text-right">  
+  <div class="small-line"></div>
+  <div class="list-group">
+    {% for category in categories[0].children %}
+      <a href="{{ category.href }}" class="list-group-item" style="display:block">{{ category.name }}</a>        
+    {% endfor %}
+  </div>
+</div>
+
+{# <div class="container">
+  <div class="row">    
+    <ul class="list-inline">
+      {% for category in categories %}
+        <li><a href="{{ category.href }}" >{{ category.name }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div> #}

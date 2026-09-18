@@ -1,0 +1,99 @@
+{{ header }}
+<div class="main-contents">
+    <!-- Breadcrumb-->
+    <section class="gb-banner banner-17">
+        <div class="container">
+            <div class="morepage-banner">
+                <h2 class="title">{{heading_title}}</h2>
+                <ol class="breadcrumb">
+                    <li><a href="index.html" class="link">{{text_home}}</a></li>
+                    <li class="active"><a href="#" class="link">{{heading_title}}</a></li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <section class="page-main padding-top-100 padding-bottom-100">
+        <div class="container">
+            <div class="main-titles-2">
+                <h2 class="title">{{contact_here}}</h2></div>
+            <div class="main-content">
+                <div class="row contact-info">
+                    <div class="col-sm-4 col-xs-6">
+                        <div class="contact-info-item"><i class="icons fa fa-map-marker"></i>
+                            <p class="title">{{our_address_text}}</p>
+                            <p class="text">{{our_address_val}}</p>   <br>                         
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                        <div class="contact-info-item"><i class="icons fa fa-clock-o"></i>
+                            <p class="title">{{open_time_text}}</p>
+                            {{open_time_val}}
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="contact-info-item"><i class="icons fa fa-volume-control-phone"></i>
+                            <p class="title">{{support_text}}</p>
+                            {{support_val}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="contact-form-wrapper padding-top-100 padding-bottom-100">
+        <div class="container">
+            <div class="main-titles-2">
+                <h2 class="title">{{in_touch}}</h2></div>
+            <div class="main-content">
+                <form action="{{ action }}" method="post" enctype="multipart/form-data" id="contactForm" novalidate="novalidate" class="contact-form">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <input id="input-name" type="text" name="name" value="{{ name }}" placeholder="{{entry_name}}" required="required" data-validation-required-message="{{entry_name}}" class="form-control">
+                                <p class="help-block text-danger"></p>
+                                {% if error_name %}
+              <div class="text-danger">{{ error_name }}</div>
+              {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <input id="input-email"  type="email" name="email" value="{{ email }}" placeholder="{{entry_email}}" required="required" data-validation-required-message="{{entry_email}}" class="form-control">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                              {% if error_email %}
+              <div class="text-danger">{{ error_email }}</div>
+              {% endif %}
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <input id="phone" type="text" placeholder="{{entry_phone}}" required="required" data-validation-required-message="{{entry_phone}}" class="form-control">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <textarea id="input-enquiry" name="enquiry" placeholder="{{entry_enquiry}}" required="required" data-validation-required-message="{{entry_enquiry}}" class="form-control form-textarea">{{ enquiry }}</textarea>
+                                <p class="help-block text-danger"></p>
+                                  {% if error_enquiry %}
+              <div class="text-danger">{{ error_enquiry }}</div>
+              {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                     {{ captcha }}
+                    <div id="success" class="margin-top-50"></div>
+                    <button type="submit" class="gb-btn btn-maincolor changed"><span class="gb-hover"></span><span class="text">{{button_submit}}</span></button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <div class="contact-map">
+        <div id="googleMap"></div>
+    </div>
+</div>
+{{ footer }}
+<script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAMUwSjOsa3FgOCul8SoRw2ldJDvJZr30k&language=el'></script>
+<script src="catalog/view/theme/default/js/contact.js"></script>

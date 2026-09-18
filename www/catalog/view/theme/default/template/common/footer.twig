@@ -1,0 +1,98 @@
+<footer>
+    <div class="footer-wrapper">
+        <div class="footer-left padding-top-100 padding-bottom-100">
+            <a href="#" class="logo"><img width="300" src="image/catalog/logo/mariz-logo.png" alt="" class="img-logo-1" /><img width="300" src="image/catalog/logo/mariz-logo-grey.png" alt="" class="img-logo-2" /></a>
+            <ul class="list-social">
+                <li><a href="https://www.facebook.com/marizpatisserie/" target="_blank" class="link"><i class="icons fa fa-facebook"></i></a></li>               
+                <li><a href="https://www.instagram.com/mariz_patisserie/" target="_blank" class="link"><i class="icons fa fa-instagram"></i></a></li>                
+            </ul>
+            <div class="hyperlink">
+                <div class="text">All Rights Reserved © Designed by WEXGroup.</div>
+            </div>
+        </div>
+        <div class="footer-right padding-top-100 padding-bottom-100">
+            <div class="row">
+                <div class="col-sm-4 col-xs-6 column-full">
+                    <div class="gamba-info widget">
+                        <div class="title-widget">{{text_contact}}</div>
+                        <div class="content-widget">
+                            <ul class="info-list">
+                                <li class="address"><a class="link">{{text_footer_address}} </a></li>
+                                <li class="number-phone"><a class="link">{{text_footer_tel}}</a></li>
+                                <li class="mail"><a class="link">info@mariz.gr</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-6 column-full">
+                    <div class="taxanomy-widget widget">
+                        <div class="title-widget">{{ text_service }}</div>
+                        <div class="content-widget">
+                            <ul class="taxanomy-list">
+                                <li><a href="{{ contact }}" class="link">{{ text_contact }}</a></li>
+                                {# <li><a href="{{ return }}" class="link">{{ text_return }}</a></li>        #}                         
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% if informations %}
+                <div class="col-sm-4 col-xs-6 column-full">
+                    <div class="taxanomy-widget widget">
+                        <div class="title-widget">{{ text_information }}</div>
+                        <div class="content-widget">
+                            <ul class="taxanomy-list">
+                                {% for information in informations %}
+                                <li> <a href="{{ information.href }}" class="link">{{ information.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {# <div class="col-sm-3 col-xs-12">
+                    <div class="newletter-widget widget">
+                        <div class="title-widget">mailing</div>
+                        <div class="content-widget">
+                            <p>{{text_footer_mail_text}}</p>
+                            <form>
+                                <div class="gb-input-group">
+                                    <input type="email" name="email" class="form-control" /><span class="input-group-button"><button type="submit" class="btn"><i class="fa fa-long-arrow-right"></i></button></span></div>
+                            </form>
+                            <p>{{text_footer_respect}}</p>
+                        </div>
+                    </div>
+                </div> #}
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <img src="catalog/view/theme/default/image/Horizontal_Banner_transparent.png" style="margin: 0 auto"  class="img-responsive">
+                    <img src="catalog/view/theme/default/image/mcpp_wllt_btn_chk_147x034px.png" style="margin: 0 auto"  class="img-responsive">
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="catalog/view/theme/default/libs/bootstrap/bootstrap.min.js"></script>
+<script src="catalog/view/theme/default/libs/bootstrap-timepicker/jquery.timepicker.min.js"></script>
+<script src="catalog/view/theme/default/libs/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+<script src="catalog/view/theme/default/libs/smooth-scroll/jquery-smoothscroll.min.js"></script>
+<script src="catalog/view/theme/default/libs/mouse-direction-aware/jquery.directional-hover.min.js"></script>
+<script src="catalog/view/theme/default/libs/wow-js/wow.min.js"></script>
+<script src="catalog/view/theme/default/libs/slick-slider/slick.min.js"></script>
+<script src="catalog/view/theme/default/libs/isotope/isotope.pkgd.min.js"></script>
+<script src="catalog/view/theme/default/libs/appear/jquery.appear.js"></script>
+<script src="catalog/view/theme/default/libs/count-to/jquery.countTo.js"></script>
+<script src="catalog/view/theme/default/libs/fancybox/jquery.fancybox.min.js"></script>
+<script src="catalog/view/theme/default/libs/fancybox/jquery.fancybox-buttons.min.js"></script>
+<script src="catalog/view/theme/default/libs/fancybox/jquery.fancybox-thumbs.min.js"></script>
+<script src="catalog/view/theme/default/js/jquery-carousel3d-1.0.1.js"></script>
+<!-- MAIN JS-->
+<script src="catalog/view/theme/default/js/main.js">
+</script>
+<script src="catalog/view/theme/default/libs/parallax/jquery.parallax-scroll.min.js"></script>
+{% for script in scripts %}
+<script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}
+</body>
+
+</html>

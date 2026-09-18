@@ -1,0 +1,73 @@
+{{ header }}
+<section class="gb-banner">
+    <div id="content" style="margin: 125px 0;">
+        <div style="display: table; margin: auto; margin-top: 10px;">
+            <div style="display: table-cell; vertical-align: middle;">
+                <div>
+                    <h1 style="font-size: 50px">{{ text_redirect_to }}</h1>
+                </div>
+            </div>
+        </div>
+        <div style="display: table; margin: auto; margin-top: 10px;">
+            <div style="display: table-cell; vertical-align: middle;">
+                <div>
+                    <img style="width: 300px; height: 100px;" align="middle" src="{{ config_url }}catalog/view/theme/default/image/Alpha_Bank_logo.svg" />
+                </div>
+            </div>
+        </div>
+        <div style="display: table; margin: auto; margin-top: 10px;">
+            <div style="display: table-cell; vertical-align: middle;">
+                <div>
+                    <h3 style="font-size: 20px">{{ text_if_redirect_fail }} <a style="font-size: 20px" onclick="document.dataform.submit();">{{ text_here }}</a></h3>
+                </div>
+            </div>
+        </div>
+        <form method="post" action="{{ bank_url }}" name="dataform">
+            {% if merchant_id is defined %}
+            <input type="hidden" name="mid" value="{{ merchant_id }}" /> {% endif %} {% if language is defined %}
+            <input type="hidden" name="lang" value="{{ language }}" /> {% endif %} {% if device_category is defined %}
+            <input type="hidden" name="deviceCategory" value="{{ device_category }}" /> {% endif %} {% if order_id is defined %}
+            <input type="hidden" name="orderid" value="{{ order_id }}" /> {% endif %} {% if order_description is defined %}
+            <input type="hidden" name="orderDesc" value="{{ order_description }}" /> {% endif %} {% if order_amount is defined %}
+            <input type="hidden" name="orderAmount" value="{{ order_amount }}" /> {% endif %} {% if currency is defined %}
+            <input type="hidden" name="currency" value="{{ currency }}" /> {% endif %} {% if payer_email is defined %}
+            <input type="hidden" name="payerEmail" value="{{ payer_email }}" /> {% endif %} {% if payer_phone is defined %}
+            <input type="hidden" name="payerPhone" value="{{ payer_phone }}" /> {% endif %} {% if bill_country is defined %}
+            <input type="hidden" name="billCountry" value="{{ bill_country }}" /> {% endif %} {% if bill_state is defined %}
+            <input type="hidden" name="billState" value="{{ bill_state }}" /> {% endif %} {% if bill_zip is defined %}
+            <input type="hidden" name="billZip" value="{{ bill_zip }}" /> {% endif %} {% if bill_city is defined %}
+            <input type="hidden" name="billCity" value="{{ bill_city }}" /> {% endif %} {% if bill_address is defined %}
+            <input type="hidden" name="billAddress" value="{{ bill_address }}" /> {% endif %} {% if weight is defined %}
+            <input type="hidden" name="weight" value="{{ weight }}" /> {% endif %} {% if dimensions is defined %}
+            <input type="hidden" name="dimensions" value="{{ dimensions }}" /> {% endif %} {% if ship_country is defined %}
+            <input type="hidden" name="shipCountry" value="{{ ship_country }}" /> {% endif %} {% if ship_state is defined %}
+            <input type="hidden" name="shipState" value="{{ ship_state }}" /> {% endif %} {% if ship_zip is defined %}
+            <input type="hidden" name="shipZip" value="{{ ship_zip }}" /> {% endif %} {% if ship_city is defined %}
+            <input type="hidden" name="shipCity" value="{{ ship_city }}" /> {% endif %} {% if ship_address is defined %}
+            <input type="hidden" name="shipAddress" value="{{ ship_address }}" /> {% endif %} {% if fraud_score is defined %}
+            <input type="hidden" name="addFraudScore" value="{{ fraud_score }}" /> {% endif %} {% if pay_method is defined %}
+            <input type="hidden" name="payMethod" value="{{ pay_method }}" /> {% endif %} {% if transaction_type is defined %}
+            <input type="hidden" name="trType" value="{{ transaction_type }}" /> {% endif %} {% if installments_normal_offset is defined %}
+            <input type="hidden" name="extInstallmentoffset" value="{{ installments_normal_offset }}" /> {% endif %} {% if installments_normal_period is defined %}
+            <input type="hidden" name="extInstallmentperiod" value="{{ installments_normal_period }}" /> {% endif %} {% if installments_recurring_frequency is defined %}
+            <input type="hidden" name="extRecurringfrequency" value="{{ installments_recurring_frequency }}" /> {% endif %} {% if installments_recurring_end_date is defined %}
+            <input type="hidden" name="extRecurringenddate" value="{{ installments_recurring_end_date }}" /> {% endif %} {% if block_score is defined %}
+            <input type="hidden" name="blockScore" value="{{ block_score }}" /> {% endif %} {% if css_url is defined %}
+            <input type="hidden" name="cssUrl" value="{{ css_url }}" /> {% endif %} {% if confirm_url is defined %}
+            <input type="hidden" name="confirmUrl" value="{{ confirm_url }}" /> {% endif %} {% if cancel_url is defined %}
+            <input type="hidden" name="cancelUrl" value="{{ cancel_url }}" /> {% endif %} {% if var_1 is defined %}
+            <input type="hidden" name="var1" value="{{ var_1 }}" /> {% endif %} {% if var_2 is defined %}
+            <input type="hidden" name="var2" value="{{ var_2 }}" /> {% endif %} {% if var_3 is defined %}
+            <input type="hidden" name="var3" value="{{ var_3 }}" /> {% endif %} {% if var_4 is defined %}
+            <input type="hidden" name="var4" value="{{ var_4 }}" /> {% endif %} {% if var_5 is defined %}
+            <input type="hidden" name="var5" value="{{ var_5 }}" /> {% endif %} {% if digest is defined %}
+            <input type="hidden" name="digest" value="{{ digest }}" /> {% endif %}
+        </form>
+    </div>
+</section>
+<script type="text/javascript">
+<!--
+window.onLoad = document.dataform.submit();
+//-->
+</script>
+{{ footer }}

@@ -1,0 +1,170 @@
+{{ header }}
+<div id="account-return" class="container">
+    {% if error_warning %}
+    <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}</div>
+    {% endif %}
+    <div class="row">
+        <div id="content" class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-offset-1 col-sm-10">
+                    <div class="header-title">
+                        <h1 class="account-title mg-b-40">{{ heading_title }}</h1>
+                    </div>
+                </div>
+            </div>
+            <form action="{{ action }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <div class="row">
+                    <div class="col-sm-offset-2 col-sm-4">
+                        <div class="form-group required">
+                            <label class="custom-label" for="input-firstname">{{ entry_firstname }}</label>
+                            <input type="text" name="firstname" value="{{ firstname }}" placeholder="{{ entry_firstname }}" id="input-firstname" class="input-custom wid99" /> {% if error_firstname %}
+                            <div class="text-danger">{{ error_firstname }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group required">
+                            <label class="custom-label" for="input-lastname">{{ entry_lastname }}</label>
+                            <input type="text" name="lastname" value="{{ lastname }}" placeholder="{{ entry_lastname }}" id="input-lastname" class="input-custom wid99" /> {% if error_lastname %}
+                            <div class="text-danger">{{ error_lastname }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-offset-2 col-sm-4">
+                        <div class="form-group required">
+                            <label class="custom-label" for="input-email">{{ entry_email }}</label>
+                            <input type="text" name="email" value="{{ email }}" placeholder="{{ entry_email }}" id="input-email" class="input-custom wid99" /> {% if error_email %}
+                            <div class="text-danger">{{ error_email }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group required">
+                            <label class="custom-label" for="input-telephone">{{ entry_telephone }}</label>
+                            <input type="text" name="telephone" value="{{ telephone }}" placeholder="{{ entry_telephone }}" id="input-telephone" class="input-custom wid99" /> {% if error_telephone %}
+                            <div class="text-danger">{{ error_telephone }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-offset-2 col-sm-4">
+                        <div class="form-group required">
+                            <label class="custom-label" for="input-order-id">{{ entry_order_id }}</label>
+                            <input type="text" name="order_id" value="{{ order_id }}" placeholder="{{ entry_order_id }}" id="input-order-id" class="input-custom wid99" /> {% if error_order_id %}
+                            <div class="text-danger">{{ error_order_id }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="custom-label" for="input-date-ordered">{{ entry_date_ordered }}</label>
+                            <div class="input-group date">
+                                <input type="text" name="date_ordered" value="{{ date_ordered }}" placeholder="{{ entry_date_ordered }}" data-date-format="YYYY-MM-DD" id="input-date-ordered" class="input-custom wid99" />
+                                <span class="input-group-btn">
+                                  <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-offset-2 col-sm-4">
+                        <div class="form-group required">
+                            <label class="custom-label" for="input-product">{{ entry_product }}</label>
+                            <input type="text" name="product" value="{{ product }}" placeholder="{{ entry_product }}" id="input-product" class="input-custom wid99" /> {% if error_product %}
+                            <div class="text-danger">{{ error_product }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group required">
+                            <label class="custom-label" for="input-model">{{ entry_model }}</label>
+                            <input type="text" name="model" value="{{ model }}" placeholder="{{ entry_model }}" id="input-model" class="input-custom wid99" /> {% if error_model %}
+                            <div class="text-danger">{{ error_model }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-offset-2 col-sm-4">
+                        <div class="form-group">
+                            <label class="custom-label" for="input-quantity">{{ entry_quantity }}</label>
+                            <input type="text" name="quantity" value="{{ quantity }}" placeholder="{{ entry_quantity }}" class="input-custom wid99" />
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group required">
+                            <label class="custom-label">{{ entry_reason }}</label>
+                            <div class="col-sm-10"> {% for return_reason in return_reasons %} {% if return_reason.return_reason_id == return_reason_id %}
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="return_reason_id" value="{{ return_reason.return_reason_id }}" checked="checked" /> {{ return_reason.name }}</label>
+                                </div>
+                                {% else %}
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="return_reason_id" value="{{ return_reason.return_reason_id }}" /> {{ return_reason.name }}</label>
+                                </div>
+                                {% endif %} {% endfor %} {% if error_reason %}
+                                <div class="text-danger">{{ error_reason }}</div>
+                                {% endif %} </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-offset-2 col-sm-4">
+                        <div class="form-group required">
+                            <label class="custom-label">{{ entry_opened }}</label>
+                            <div class="col-sm-10">
+                                <label class="radio-inline"> {% if opened %}
+                                    <input type="radio" name="opened" value="1" checked="checked" /> {% else %}
+                                    <input type="radio" name="opened" value="1" /> {% endif %} {{ text_yes }}</label>
+                                <label class="radio-inline"> {% if not opened %}
+                                    <input type="radio" name="opened" value="0" checked="checked" /> {% else %}
+                                    <input type="radio" name="opened" value="0" /> {% endif %} {{ text_no }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="custom-label" for="input-comment">{{ entry_fault_detail }}</label>
+                            <div class="col-sm-10">
+                                <textarea name="comment" rows="10" placeholder="{{ entry_fault_detail }}" id="input-comment" class="input-custom wid99">{{ comment }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{ captcha }} {% if text_agree %}
+                <div class="buttons clearfix">
+                    <div class="pull-left"><a href="{{ back }}" class="btn btn-danger">{{ button_back }}</a></div>
+                    <div class="pull-right">{{ text_agree }} {% if agree %}
+                        <input type="checkbox" name="agree" value="1" checked="checked" /> {% else %}
+                        <input type="checkbox" name="agree" value="1" /> {% endif %}
+                        <input type="submit" value="{{ button_submit }}" class="btn btn-primary" />
+                    </div>
+                </div>
+                {% else %}
+                <div class="row" style="margin-top:40px;">
+                    <div class="col-sm-offset-1 col-sm-4 btn-fixed-left">
+                        <a href="{{ back }}" class="btn custom-prmbtn btn-fill-gold-not-hover">{{ button_back }}</a></div>
+                    <div class="col-sm-offset-2 col-sm-4 btn-fixed-right">
+                        <input type="submit" value="{{ button_submit }}" class="btn custom-prmbtn btn-gold" />
+                    </div>
+                </div>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+<!--
+$('.date').datetimepicker({
+    language: '{{ datepicker }}',
+    pickTime: false
+});
+//-->
+</script>
+{{ footer }}

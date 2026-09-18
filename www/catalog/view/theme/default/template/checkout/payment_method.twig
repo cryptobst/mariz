@@ -1,0 +1,47 @@
+{% if error_warning %}
+<div class="alert alert-warning alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}</div>
+{% endif %}
+{% if payment_methods %}
+<p>{{ text_payment_method }}</p>
+{% for payment_method in payment_methods %}
+<div class="radio">
+    <label>{% if payment_method.code == code or not code %}
+        {% set code = payment_method.code %}
+        <input type="radio" name="payment_method" value="{{ payment_method.code }}" checked="checked" />
+        {% else %}
+        <input type="radio" name="payment_method" value="{{ payment_method.code }}" />
+        {% endif %}
+        {{ payment_method.title }}
+        {% if payment_method.terms %}
+        ({{ payment_method.terms }})
+        {% endif %} </label>
+</div>
+{% endfor %}
+{% endif %}
+<p><strong>{{ text_comments }}</strong></p>
+<p>
+    <textarea name="comment" rows="8" class="form-control">{{ comment }}</textarea>
+</p>
+{% if text_agree %}
+<div class="row">
+    <div class="col-sm-offset-1 col-sm-4 btn-fixed-left" style="margin-left: 0;">
+        <a href="#collapse-shipping-method" aria-expanded="false" class="btn backCheckout accordion-toggle custom-prmbtn btn-fill-gold-not-hover">{{ button_back }}</a></div>
+    <div class="col-sm-offset-2 col-sm-5 btn-fixed-right" style="margin-left: 25%;">
+        <div style="font-weight: normal;margin-left: -35px;">{{ text_agree }}
+            {% if agree %}
+            <input type="checkbox" name="agree" value="1" checked="checked" />
+            {% else %}
+            <input type="checkbox" name="agree" value="1" />
+            {% endif %}
+        </label><input type="button" value="{{ button_continue }}" id="button-payment-method" data-loading-text="{{ text_loading }}" class="btn custom-prmbtn btn-gold" />
+    </div>
+</div>
+{% else %}
+<div class="row">
+    <div class="col-sm-offset-1 col-sm-4 btn-fixed-left">
+        <a href="#collapse-shipping-method" aria-expanded="false" class="btn backCheckout accordion-toggle custom-prmbtn btn-fill-gold-not-hover">{{ button_back }}</a></div>
+    <div class="col-sm-offset-2 col-sm-4 btn-fixed-right">
+        <input type="button" value="{{ button_continue }}" id="button-payment-method" data-loading-text="{{ text_loading }}" class="btn custom-prmbtn btn-gold" />
+    </div>
+</div>
+{% endif %}

@@ -1,0 +1,376 @@
+{{ header }}
+
+<style>
+    a.tablink {
+        height: 40px;
+        margin: 0px;
+        padding: 5px 5px 0px 5px;
+    }
+
+    a.tablink_default {
+        height: 40px;
+    }
+
+    .form-horizontal .radio, .form-horizontal .checkbox, .form-horizontal .radio-inline, .form-horizontal .checkbox-inline {
+        padding-top: 0px !important;
+    }
+
+</style>
+
+{{ column_left }}
+
+
+<div id="content">
+    {% if result['valid'] is defined %}
+    <div class="page-header">
+        <div class="container-fluid">
+            <div class="pull-right">
+                <button type="submit" form="ocgrAlphaBank-form" class="btn btn-primary" data-toggle="tooltip"
+                        title="{{ button_save }}"><i class="fa fa-save"></i></button>
+                <a class="btn btn-default" data-toggle="tooltip" href="{{ cancel }}" title="{{ button_cancel }}"><i
+                            class="fa fa-reply"></i></a>
+            </div>
+
+
+            <div style='margin-left:10px;margin-right:10px;'>
+                <h1>{{ heading_title }}</h1>
+                <ul class="breadcrumb">
+                    {% for breadcrumb in breadcrumbs %}
+                        <li><a href="{{ breadcrumb['href'] }}">{{ breadcrumb['text'] }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="container-fluid">
+
+                {% if ocgrAlphaBank_warning_error %}
+                    <div class="alert alert-danger"><i
+                                class="fa fa-exclamation-circle"></i> {{ ocgrAlphaBank_warning_error }}
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    </div>
+                {% endif %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_edit }}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="nav nav-tabs" id="ocgrAlphaBank-tabs">
+                            <li><a class="tablink_default" data-toggle="tab" href="#tab-configuration">Ρυθμίσεις</a>
+                            </li>
+                            <li><a class="tablink" data-toggle="tab" href="#tab-info">Πληροφορίες</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane" id="tab-configuration">
+                                <div class="col-sm-10">
+                                    <form method="post" enctype="multipart/form-data" action="{{ action }}"
+                                          class="form-horizontal" id="form-html-content">
+                                        <div class="form-group required">
+                                            <label for="ocgrAlphaBank_merchant_id" class="col-sm-2 control-label"><span
+                                                        data-toggle="tooltip"
+                                                        title="{{ entry_merchant_id_info }}">{{ entry_merchant_id }}</span></label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="payment_ocgrAlphaBank_merchant_id" class="form-control"
+                                                       placeholder="{{ entry_merchant_id }}"
+                                                       value="{{ ocgrAlphaBank_merchant_id }}"/>
+                                                {% if ocgrAlphaBank_merchant_id_error %}
+                                                    <div class="text-danger">{{ ocgrAlphaBank_merchant_id_error }}</div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="form-group required">
+                                            <label for="ocgrAlphaBank_shared_secret"
+                                                   class="col-sm-2 control-label"><span data-toggle="tooltip"
+                                                                                        title="{{ entry_shared_secret_info }}">{{ entry_shared_secret }}</span></label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="payment_ocgrAlphaBank_shared_secret"
+                                                       class="form-control" placeholder="{{ entry_merchant_id }}"
+                                                       value="{{ ocgrAlphaBank_shared_secret }}"/>
+                                                {% if ocgrAlphaBank_shared_secret_error %}
+                                                    <div class="text-danger">{{ ocgrAlphaBank_shared_secret_error }}</div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ocgrAlphaBank_mode"
+                                                   class="col-sm-2 control-label">{{ entry_mode }}</label>
+                                            <div class="col-sm-10">
+                                                <input type="radio" name="payment_ocgrAlphaBank_mode" class="radio-inline"
+                                                       value="0" {% if ocgrAlphaBank_mode  == 0 %} {{ 'checked' }}{% endif %}>{{ entry_mode_test }}
+                                                <input type="radio" name="payment_ocgrAlphaBank_mode" class="radio-inline"
+                                                       value="1" {% if ocgrAlphaBank_mode  == 1 %} {{ 'checked' }}{% endif %}>{{ entry_mode_live }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ocgrAlphaBank_masterpass"
+                                                   class="col-sm-2 control-label">{{ entry_masterpass }}</label>
+                                            <div class="col-sm-10">
+                                                <input type="radio" name="payment_ocgrAlphaBank_masterpass" class="radio-inline"
+                                                       value="0" {% if ocgrAlphaBank_masterpass  == 0 %} {{ 'checked' }}{% endif %}>{{ entry_masterpass_off }}
+                                                <input type="radio" name="payment_ocgrAlphaBank_masterpass" class="radio-inline"
+                                                       value="1" {% if ocgrAlphaBank_masterpass  == 1 %} {{ 'checked' }}{% endif %}>{{ entry_masterpass_on }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="display:none;">
+                                            <label for="ocgrAlphaBank_merchant_hosted_payment"
+                                                   class="col-sm-2 control-label"><span data-toggle="tooltip"
+                                                                                        title="{{ entry_merchant_hosted_payment_info }}">{{ entry_merchant_hosted_payment }}</span></label>
+                                            <div class="col-sm-10">
+                                                <input type="radio" name="payment_ocgrAlphaBank_merchant_hosted_payment"
+                                                       class="radio-inline"
+                                                       value="0" {% if ocgrAlphaBank_merchant_hosted_payment  == 0 %} {{ 'checked' }}{% endif %}>{{ entry_merchant_hosted_payment_false }}
+                                                <input type="radio" name="payment_ocgrAlphaBank_merchant_hosted_payment"
+                                                       class="radio-inline"
+                                                       value="1" {% if ocgrAlphaBank_merchant_hosted_payment  == 1 %} {{ 'checked' }}{% endif %}>{{ entry_merchant_hosted_payment_true }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ocgrAlphaBank_transaction_type"
+                                                   class="col-sm-2 control-label"><span data-toggle="tooltip"
+                                                                                        title="{{ entry_transaction_type_info }}">{{ entry_transaction_type }}</span></label>
+                                            <div class="col-sm-10">
+                                                <input type="radio" name="payment_ocgrAlphaBank_transaction_type"
+                                                       class="radio-inline"
+                                                       value="0" {% if ocgrAlphaBank_transaction_type  == 0 %} {{ 'checked' }}{% endif %}>{{ entry_transaction_type_sale }}
+                                                <input type="radio" name="payment_ocgrAlphaBank_transaction_type"
+                                                       class="radio-inline"
+                                                       value="1" {% if ocgrAlphaBank_transaction_type  == 1 %} {{ 'checked' }}{% endif %}>{{ entry_transaction_type_authorize }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="payment_ocgrAlphaBank_installments_type" class="col-sm-2 control-label"><span
+                                                        data-toggle="tooltip"
+                                                        title="{{ entry_installments_type_info }}">{{ entry_installments_type }}</span></label>
+                                            <div class="col-sm-10">
+                                                <input type="radio" name="payment_ocgrAlphaBank_installments_type"
+                                                       class="radio-inline" value="0"
+                                                       onClick="showInstallmentsType();" {% if ocgrAlphaBank_installments_type  == 0 %} {{ 'checked' }}{% endif %}>{{ entry_installments_type_none }}
+                                                <input type="radio" name="payment_ocgrAlphaBank_installments_type"
+                                                       class="radio-inline" value="1"
+                                                       onClick="showInstallmentsType();" {% if ocgrAlphaBank_installments_type  == 1 %} {{ 'checked' }}{% endif %}>{{ entry_installments_type_normal }}
+                                                <input type="radio" name="payment_ocgrAlphaBank_installments_type"
+                                                       class="radio-inline" value="2"
+                                                       onClick="showInstallmentsType();" {% if ocgrAlphaBank_installments_type  == 2 %} {{ 'checked' }}{% endif %}>{{ entry_installments_type_recurring }}
+                                            </div>
+                                        </div>
+                                        <div name="payment_ocgrAlphaBank_installments_type_0"
+                                             id="payment_ocgrAlphaBank_installments_type_0" {% if ocgrAlphaBank_installments_type != 0 %} {{ 'style="display:none;"' }}{% endif %}></div>
+                                        <div name="payment_ocgrAlphaBank_installments_type_1"
+                                             id="payment_ocgrAlphaBank_installments_type_1" {% if ocgrAlphaBank_installments_type != 1 %} {{ 'style="display:none;"' }}{% endif %}>
+                                            <div class="form-group">
+                                                <label for="payment_ocgrAlphaBank_installments_type"
+                                                       class="col-sm-2 control-label"><span data-toggle="tooltip"
+                                                                                            title="{{ entry_installments_normal_period_info }}">{{ entry_installments_normal_period }}</span></label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="payment_ocgrAlphaBank_installments_normal_period"
+                                                           class="form-control"
+                                                           placeholder="{{ entry_installments_normal_period }}"
+                                                           value="{{ ocgrAlphaBank_installments_normal_period }}"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="ocgrAlphaBank_installments_normal_offset"
+                                                       class="col-sm-2 control-label"><span data-toggle="tooltip"
+                                                                                            title="{{ entry_installments_normal_offset_info }}">{{ entry_installments_normal_offset }}</span></label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="payment_ocgrAlphaBank_installments_normal_offset"
+                                                           class="form-control"
+                                                           placeholder="{{ entry_installments_normal_offset }}"
+                                                           value="{{ ocgrAlphaBank_installments_normal_offset }}"/>
+                                                    {% if ocgrAlphaBank_installments_normal_offset_error %}
+                                                        <div class="text-danger">{{ ocgrAlphaBank_installments_normal_offset_error }}</div>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div name="payment_ocgrAlphaBank_installments_type_2"
+                                             id="payment_ocgrAlphaBank_installments_type_2" {% if ocgrAlphaBank_installments_type != 2 %} {{ 'style="display:none;"' }}{% endif %}>
+                                            <div class="form-group">
+                                                <label for="ocgrAlphaBank_installments_recurring_frequency"
+                                                       class="col-sm-2 control-label"><span data-toggle="tooltip"
+                                                                                            title="{{ entry_installments_recurring_frequency_info }}">{{ entry_installments_recurring_frequency }}</span></label>
+                                                <div class="col-sm-10">
+                                                    <input type="text"
+                                                           name="payment_ocgrAlphaBank_installments_recurring_frequency"
+                                                           class="form-control"
+                                                           placeholder="{{ entry_installments_recurring_frequency }}"
+                                                           value="{{ ocgrAlphaBank_installments_recurring_frequency }}"/>
+                                                    {% if ocgrAlphaBank_installments_recurring_frequency_error %}
+                                                        <div class="text-danger">{{ ocgrAlphaBank_installments_recurring_frequency_error }}</div>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label"
+                                                       for="ocgrAlphaBank_installments_recurring_end_date"><span
+                                                            data-toggle="tooltip"
+                                                            title="{{ entry_installments_recurring_end_date_info }}">{{ entry_installments_recurring_end_date }}</span></label>
+                                                <div class="col-sm-10">
+                                                    <div class="input-group date">
+                                                        <input type="text"
+                                                               name="payment_ocgrAlphaBank_installments_recurring_end_date"
+                                                               class="form-control" data-format="DD-MM-YYYY"
+                                                               placeholder="{{ entry_installments_recurring_end_date }}"
+                                                               value="{{ ocgrAlphaBank_installments_recurring_end_date }}"/>
+                                                        <span class="input-group-btn">
+													<button type="button" class="btn btn-default"><i
+                                                                class="fa fa-calendar"></i></button>
+												</span>
+                                                    </div>
+                                                    {% if ocgrAlphaBank_installments_recurring_end_date_error %}
+                                                        <div class="text-danger">{{ ocgrAlphaBank_installments_recurring_end_date_error }}</div>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ocgrAlphaBank_css_url" class="col-sm-2 control-label"><span
+                                                        data-toggle="tooltip"
+                                                        title="{{ entry_css_url_info }}">{{ entry_css_url }}</span></label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="payment_ocgrAlphaBank_css_url" class="form-control"
+                                                       placeholder="{{ entry_css_url }}"
+                                                       value="{{ ocgrAlphaBank_css_url }}"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ocgrAlphaBank_total"
+                                                   class="col-sm-2 control-label">{{ entry_total }}</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="payment_ocgrAlphaBank_total" class="form-control"
+                                                       placeholder="{{ entry_total }}"
+                                                       value="{{ ocgrAlphaBank_total }}"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ocgrAlphaBank_order_status_id"
+                                                   class="col-sm-2 control-label">{{ entry_order_status }}</label>
+                                            <div class="col-sm-10">
+                                                <select name="payment_ocgrAlphaBank_order_status_id" class="form-control">
+                                                    {% for order_status in order_statuses %}
+                                                        <option value="{{ order_status['order_status_id'] }}" {% if ocgrAlphaBank_order_status_id  == order_status['order_status_id'] %} {{ 'selected' }}{% endif %}>{{ order_status['name'] }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label"
+                                                   for="ocgrAlphaBank_geo_zone_id">{{ entry_geo_zone }}</label>
+                                            <div class="col-sm-10">
+                                                <select name="payment_ocgrAlphaBank_geo_zone_id" class="form-control">
+                                                    {% for geo_zone in geo_zones %}
+                                                        <option value="{{ geo_zone['geo_zone_id'] }}" {% if ocgrAlphaBank_geo_zone_id  == geo_zone['geo_zone_id'] %} {{ 'selected' }}>{{ geo_zone['name'] }}{% endif %}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ocgrAlphaBank_status"
+                                                   class="col-sm-2 control-label">{{ entry_status }}</label>
+                                            <div class="col-sm-10">
+                                                <select name="payment_ocgrAlphaBank_status" class="form-control">
+                                                    <option value="1" {% if ocgrAlphaBank_status  == 1 %} {{ 'selected' }}{% endif %}>{{ text_enabled }}</option>
+                                                    <option value="0" {% if ocgrAlphaBank_status  == 0 %} {{ 'selected' }}{% endif %}>{{ text_disabled }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ocgrAlphaBank_sort_order"
+                                                   class="col-sm-2 control-label">{{ entry_sort_order }}</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="payment_ocgrAlphaBank_sort_order" class="form-control"
+                                                       value="{{ ocgrAlphaBank_sort_order }}"/>
+                                                {% if ocgrAlphaBank_sort_order_error %}
+                                                    <div class="text-danger">{{ ocgrAlphaBank_sort_order_error }}</div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab-info">
+                                <div class="form-horizontal" style="padding-left: 15px; padding-right: 15px">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">{{ credits }}</label>
+                                        <div class="col-sm-10">{{ "OpenCart Greece" }}</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">{{ license }}</label>
+                                        {{ result['license'] }}
+                                        <div class="col-sm-10">{% if result['license'] is defined and result['license'] == "active" %}
+                                            Το license σας είναι ενεργό με τον αρ. παραγγελίας σας. Σας ευχαριστούμε
+                                            {% elseif result['comment'] is defined and result['comment'] != "Trial" %}
+                                                Το license σας είναι ενεργό με τον αρ. παραγγελίας σας. <strong>Στοιχεία:</strong>  {{ result['comment'] }}
+                                            {% else %} Το license σας θα είναι ενεργό όταν δηλώσετε το domain με τον αρ.
+                                            παραγγελίας σας στο <a href='https://support.opencart.today/'>support
+                                                μας</a>.
+                                        </div>
+                                        {% endif %}
+                                    </div>
+
+                                    <div>
+                                        <p>
+                                        <h3>Ενημέρωση</h3>Έχετε κάνει εγκατάσταση του extension για την Alpha Bank στην ιστοσελίδα:
+                                        <strong>{{ domain }}</strong>.<br>
+                                        Θα θέλαμε να σας ενημερώσουμε ότι, μετά από τις 10 ημέρες μετά την 1η εγκατάσταση
+                                        δεν έχετε πλέον κάποιο πακέτο υποστήριξης ενεργό. Γνωρίζουμε πότε έχει γίνει εγκατάσταση<br>
+                                        και σε ποιες ιστοσελίδες.<br>
+                                        Μπορείτε να χρησιμοποιείτε το extension για το <strong>συγκεκριμένο domain</strong> αλλά όμως χωρίς
+                                        κάποια επιπλέον δωρεάν υποστήριξη.<br>
+                                        Εάν χρειάζεστε σήμερα κάποια υποστήριξη ή αλλαγή, τότε παρακαλούμε δείτε τα πακέτα μας για μηνιαία
+                                        υποστήριξη ή αγοράστε εκ νέου license για το συγκεκριμένο extension.<br>
+                                        Για περισσότερες πληροφορίες παρακαλούμε επισκευτείτε την ιστοσελίδα μας: <a
+                                                href='https://www.opencartgreece.gr/'>https://www.opencartgreece.gr/</a>
+                                        ή στο ηλεκτρονικό μας κατάστημα: <a
+                                                href='https://eshop.opencartgreece.gr/'>https://eshop.opencartgreece.gr/</a>.<br>
+                                        <br>
+                                        Εάν λάβατε το συγκεκριμένο extension χωρίς να έχετε κάποιο license παρακαλούμε όπως παραγγείλετε ένα άμεσα.<br>
+                                        Όλες οι εγκαταστάσεις περνάνε από έγκριση σε συνεργασία με την Τράπεζα AlphaBank και χωρίς την απαραίτητη άδεια
+                                        η εγκατάσταση σας <u>θα μπλοκαριστεί χωρίς καμία επιπλέον προειδοποίηση</u>.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+
+    </div>
+    {% else %}
+        <strong>LICENSE ERROR:</strong>{{ result['message'] }}<br><br><a
+            href='http://wiki.botonakis.com/active-extension-license/'>License Information</a>
+        <br><br><a href='https://eshop.opencartgreece.gr/alphabank-opencart-2-2-2-3-el?search="{{domain}}"'>Buy
+        AlphaBank license here</a>
+    {% endif %}
+    <script type="text/javascript"><!--
+        function showInstallmentsType() {
+            var radio_group = document.getElementsByName("payment_ocgrAlphaBank_installments_type");
+            for (var i = 0; i < radio_group.length; i++) {
+                var button = radio_group[i];
+                method = document.getElementById("payment_ocgrAlphaBank_installments_type_" + button.value);
+                method.setAttribute('style', method.style.cssText);
+                method.style.cssText = 'display:none;';
+
+                if (button.checked) {
+                    method.style.cssText = 'display:block;';
+                }
+            }
+        }
+
+        $('.date').datetimepicker({
+            pickTime: false
+        });
+
+        $('.time').datetimepicker({
+            pickDate: false
+        });
+
+        $('.datetime').datetimepicker({
+            pickDate: true,
+            pickTime: true
+        });
+
+        $('#ocgrAlphaBank-tabs li:first-child a').tab('show');
+        //--></script>
+{{ footer }}

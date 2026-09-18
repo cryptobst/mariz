@@ -1,0 +1,39 @@
+<div class="row">
+    <div id="content" class="col-sm-12">
+        <div class="row custom-form-row checkout" style="margin:0 auto;">
+            <div class="col-sm-6 text-center">
+                <div>
+                    <h2 class="account-title">{{ text_returning_customer }}</h2>
+                    <form action="{{ action }}" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label class="custom-label" for="input-email" style="width: 320px;margin: 0px auto 10px;">{{ entry_email }}</label>
+                            <input type="text" name="email" style="width: 320px;margin: 0px auto 10px;" value="{{ email }}" id="input-email" class="input-custom" />
+                        </div>
+                        <div class="form-group">
+                            <label class="custom-label" for="input-password" style="width: 320px;margin: 0px auto 10px;">{{ entry_password }}</label>
+                            <input type="password" name="password" style="width: 320px;margin: 0px auto 10px;" value="{{ password }}" id="input-password" class="input-custom" />
+                            <a class="f-11" href="{{ forgotten }}">{{ text_forgotten }}</a>
+                        </div>
+                        <input type="button" value="{{ button_login }}" id="button-login" data-loading-text="{{ text_loading }}" class="btn custom-prmbtn btn-fill-gold mg-t-15" />
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-6 text-center">
+                <h2 class="account-title text-center">{{ text_new_customer }}</h2>
+                <div class="radio">
+                    <label> {% if account == 'register' %}
+                        <input type="radio" name="account" value="register" checked="checked" /> {% else %}
+                        <input type="radio" name="account" value="register" /> {% endif %} {{ text_register }}</label>
+                </div>
+                {% if checkout_guest %}
+                <div class="radio">
+                    <label> {% if account == 'guest' %}
+                        <input type="radio" name="account" value="guest" checked="checked" /> {% else %}
+                        <input type="radio" name="account" value="guest" /> {% endif %} {{ text_guest }}</label>
+                </div>
+                {% endif %}
+                <input type="button" value="{{ button_continue }}" id="button-account" data-loading-text="{{ text_loading }}" class="btn custom-prmbtn btn-fill-gold" />
+            </div>
+        </div>
+    </div>
+</div>

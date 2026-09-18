@@ -1,0 +1,50 @@
+{{ header }}
+<div id="account-address" class="container">
+    {% if success %}
+    <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}</div>
+    {% endif %} {% if error_warning %}
+    <div class="alert alert-warning"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}</div>
+    {% endif %}
+    <div class="row">
+      {% if addresses|length == 1 %}
+        {% set class = 'col-md-12' %}
+      {% elseif addresses|length == 2 %}
+        {% set class = 'col-md-6' %}
+      {% elseif addresses|length == 3 %}
+        {% set class = 'col-md-4' %}
+      {% elseif addresses|length > 3 %}
+        {% set class = 'col-md-3' %}
+      {% endif %}
+        <div id="content" class="col-sm-12">
+            <h2 class="account-title">{{ text_address_book }}</h2> 
+            {% if addresses %}                          
+              <div class="address-holder">
+                {% for addressesCut in addresses | batch(4) %}
+                  <div class="row">
+                    {% for result in addressesCut %}
+                      <div class="{{class}}">
+                        <div class="square-grid">
+                          <p class="address-text">{{ result.address }}</p>
+                          <div class="btn-inline-holder">
+                            <a href="{{ result.update }}" class="btn btn-fill-gold"><i class="fa fa-pencil"></i></a> &nbsp; <a href="{{ result.delete }}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                          </div>
+                        </div>
+                      </div>                    
+                    {% endfor %}
+                  </div>
+                {% endfor %}            
+              </div>         
+            {% else %}
+            <p>{{ text_empty }}</p>
+            {% endif %}
+            <div class="row">
+                <div class="col-sm-offset-1 col-sm-4 btn-fixed-left">
+                    <a href="{{ back }}" class="btn custom-prmbtn btn-fill-gold-not-hover">{{ button_back }}</a></div>
+                <div class="col-sm-offset-2 col-sm-4 btn-fixed-right">
+                    <a href="{{ add }}" class="btn custom-prmbtn btn-gold">{{ button_new_address }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ footer }}

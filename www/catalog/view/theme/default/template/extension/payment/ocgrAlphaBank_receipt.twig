@@ -1,0 +1,52 @@
+{{ header }}
+<section class="gb-banner">
+    <div id="content" style="margin: 125px 0;">
+        <br>
+        <table style="min-width: 500px; margin: auto; border: 1px solid black;">
+            <tr>
+                <th colspan="2" style="font-size: 20px; text-align: center;">{{ text_receipt }}</th>
+            </tr>
+            <tr>
+                <td style="padding-left:5px;">{{ text_name_lastname }}</td>
+                <td>{{ name_lastname }}</td>
+            </tr>
+            <tr>
+                <td style="padding-left:5px;">{{ text_order_id }}</td>
+                <td>{{ order_id }}</td>
+            </tr>
+            <tr>
+                <td style="padding-left:5px;">{{ text_business_name }}</td>
+                <td>{{ business_name }}</td>
+            </tr>
+            <tr>
+                <td style="padding-left:5px;">{{ text_business_web_address }}</td>
+                <td>{{ business_web_address }}</td>
+            </tr>
+            <tr>
+                <td style="padding-left:5px;">{{ text_order_info }}</td>
+                <td>{{ order_info }}</td>
+            </tr>
+            <tr>
+                <td style="padding-left:5px;">{{ text_transaction_amount }}</td>
+                <td>{{ transaction_amount }}</td>
+            </tr>
+            <tr>
+                <td style="padding-left:5px;">{{ text_transaction_currency }}</td>
+                <td>{{ transaction_currency }}</td>
+            </tr>
+            <tr>
+                <td style="padding-left:5px;">{{ text_transaction_date }}</td>
+                <td>{{ transaction_date }}</td>
+            </tr>
+        </table>
+        <br>
+        <table style="min-width: 500px; margin: auto;">
+            <tr>
+                <td>
+                    <a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+{{ footer }}

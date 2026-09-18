@@ -1,0 +1,23 @@
+{% if languages|length > 1 %}
+  {% for language in languages %}
+      {% if language.code == code %} 
+        <div class="languages language-active"> {{ language.name | slice(0, 2)}}</div>
+      {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if languages|length > 1 %}
+<div class="language-dropdown">
+  {% for language in languages %}
+      {% if language.code != code %} 
+        <button class="btn btn-link btn-block language-select" type="button" name="{{ language.code }}">{{ language.name | slice(0, 2)}}</button>
+      {% endif %}
+  {% endfor %}
+</div>
+{% endif %}
+
+
+<form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-language" style="display:none;">   
+    <input type="hidden" name="code" value="" />
+    <input type="hidden" name="redirect" value="{{ redirect }}" />
+</form>

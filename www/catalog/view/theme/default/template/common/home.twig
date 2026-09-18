@@ -1,0 +1,47 @@
+{{ header }}
+<div id="common-home">
+    <div>{{ column_left }} {% if column_left and column_right %} {% set class = 'col-sm-6' %} {% elseif column_left or column_right %} {% set class = 'col-sm-9' %} {% endif %}
+        <div id="content" class="{{ class }}">{{ content_top }}{{ content_bottom }}</div>
+        {{ column_right }}</div>
+    <section class="contact-form-wrapper padding-top-100 padding-bottom-100">
+        <div class="container">
+            <div class="main-titles">
+                <h5 class="subtitle">Mariz για ολες τις </h5>
+                <h1 data-name="περιστασεις" class="title"> <span>περιστασεις</span></h1>
+            </div>
+            <div class="main-content">                
+                <form id="contactForm" action="{{ action }}" method="post" enctype="multipart/form-data" class="contact-form">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group required">
+                                <input name="name" value="{{ name }}" id="input-name" type="text" placeholder="{{entry_name}}" class="form-control"> {% if error_name %}
+                                <div class="text-danger">{{ error_name }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group required">
+                                <input name="email" value="{{ email }}" id="input-email" type="email" placeholder="{{entry_email}}" required="required" class="form-control"> {% if error_email %}
+                                <div class="text-danger">{{ error_email }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group required">
+                                <textarea name="enquiry" id="input-enquiry" placeholder="{{entry_enquiry}}" required="required" class="form-control form-textarea"></textarea>
+                                {% if error_enquiry %}
+                                <div class="text-danger">{{ error_enquiry }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div id="success" class="margin-top-50"></div>                    
+                    <button type="submit" class="gb-btn btn-maincolor"><span class="gb-hover"></span><span class="text">{{button_submit}}</span></button>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+{{ footer }}

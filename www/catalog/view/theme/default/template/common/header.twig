@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<!--[if IE 8 ]><html dir="{{ direction }}" lang="{{ lang }}" class="ie8"><![endif]-->
+<!--[if IE 9 ]><html dir="{{ direction }}" lang="{{ lang }}" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html dir="{{ direction }}" lang="{{ lang }}">
+<!--<![endif]-->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{ title }}</title>
+    <base href="{{ base }}" /> {% if description %}
+    <meta name="description" content="{{ description }}" /> {% endif %} {% if keywords %}
+    <meta name="keywords" content="{{ keywords }}" /> {% endif %} {#
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900"> #}
+    <link href="https://fonts.googleapis.com/css?family=Cardo|Comfortaa&amp;subset=greek" rel="stylesheet"> {#
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700,900" rel="stylesheet"> #}
+    <link type="text/css" rel="stylesheet" href="catalog/view/theme/default/stylesheet/font-awesome.css">
+    <link type="text/css" rel="stylesheet" href="catalog/view/theme/default/stylesheet/flaticon.css">
+    <!-- LIBRARY CSS-->
+    <link type="text/css" rel="stylesheet" href="catalog/view/theme/default/libs/bootstrap/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="catalog/view/theme/default/libs/bootstrap-timepicker/jquery.timepicker.css">
+    <link type="text/css" rel="stylesheet" href="catalog/view/theme/default/libs/bootstrap-datepicker/bootstrap-datepicker.min.css">
+    <link type="text/css" rel="stylesheet" href="catalog/view/theme/default/libs/animate/animate.css">
+    <link type="text/css" rel="stylesheet" href="catalog/view/theme/default/libs/slick-slider/slick.css">
+    <link type="text/css" rel="stylesheet" href="catalog/view/theme/default/libs/slick-slider/slick-theme.css">
+    <link type="text/css" rel="stylesheet" href="catalog/view/theme/default/libs/fancybox/jquery.fancybox.css">
+    <link type="text/css" rel="stylesheet" href="catalog/view/theme/default/libs/fancybox/jquery.fancybox-buttons.css">
+    <link type="text/css" rel="stylesheet" href="catalog/view/theme/default/libs/fancybox/jquery.fancybox-thumbs.css">
+    <link type="text/css" rel="stylesheet" href="catalog/view/theme/default/stylesheet/carousel3d.css">
+    <!-- STYLE CSS-->
+    <link type="text/css" rel="stylesheet" href="catalog/view/theme/default/stylesheet/layout.css">
+    <link type="text/css" rel="stylesheet" href="catalog/view/theme/default/stylesheet/components.css">
+    <link type="text/css" rel="stylesheet" href="catalog/view/theme/default/stylesheet/responsive.css">
+    <link type="text/css" rel="stylesheet" href="catalog/view/theme/default/stylesheet/stylesheet.css">
+    
+    <script src="catalog/view/theme/default/libs/jquery/jquery-2.2.4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    {% for style in styles %}
+    <link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" /> {% endfor %} {% for script in scripts %}
+    <script src="{{ script }}" type="text/javascript"></script>
+    {% endfor %}
+    <script src="catalog/view/javascript/common.js" type="text/javascript"></script>
+    {% for link in links %}
+    <link href="{{ link.href }}" rel="{{ link.rel }}" /> {% endfor %} {% for analytic in analytics %} {{ analytic }} {% endfor %}
+</head>
+
+<body>  
+    <!-- MENU MOBILE BACKGROUND-->
+    <div class="body-wrapper">
+        <div class="wrapper-menu-mobile-background"></div>
+        <!-- MENU MOBILE-->
+        <div class="wrapper-menu-mobile">
+            <div class="mb-social-wrapper">
+                <div class="mb-socials">
+                    <ul class="list-unstyled list-inline">
+                        <li><a href="#" class="link facebook"><i class="fa fa-facebook"></i></a></li>                                                
+                        <li><a href="#" class="link instagram"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+                <div class="mb-button-close"><i class="icons fa fa-times"></i></div>
+                <div class="clearfix"></div>
+            </div>           
+            <ul class="nav navbar-nav mb-nav">
+                <li><a href="{{home}}" class="main-menu"><span class="text">{{text_home}}</span></a></li>
+                <li><a href="contact" class="main-menu"><span class="text">{{text_contact}}</span></a></li>
+                <li><a href="{{product}}" class="main-menu"><span class="text">{{text_products}}</span></a></li>
+                <li><a href="{{services}}" class="main-menu"><span class="text">{{text_services}}</span></a></li>
+                <li><a href="contact" class="main-menu"><span class="text">{{text_contact}}</span></a></li>                               
+                <li>
+                    {% if logged %}
+                        <a class="main-menu" href="{{account}}">{{customerName}}</a> 
+                    {% else %}
+                        <a class="main-menu" href="{{login}}">{{text_login_register}}</a> {% endif %}
+                </li>           
+                <li><div class="language-menu"><a class="main-menu" style="cursor:pointer">{{language}}</a></div></li> 
+            </ul>
+        </div>
+        <!-- SEARCH MOBILE-->
+        <div class="wrapper-search-mobile">
+            <div class="mb-social-wrapper">
+                <div class="mb-button-close"><i class="icons fa fa-times"></i></div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="mb-search">
+                <form>
+                    <input type="text" placeholder="Search" onfocus="this.placeholder = ''" class="searchbox" />
+                    <div class="line-boder"></div>
+                    <button type="submit" class="searchbutton fa fa-search"></button>
+                </form>
+            </div>
+        </div>
+        <!-- WRAPPER CONTENT-->
+        <div class="wrapper-content">
+            <!-- HEADER-->
+            <header>
+                <div class="bg-transparent header-02 {{class}}">
+                    <div class="header-main">
+                        <div class="container header-container">
+                            <div class="header-main-wrapper">
+                                <div class="hamburger-menu-mobile"><i class="icons fa fa-bars"></i></div>
+                                <div class="logo-wrapper">
+                                    <a href="{{ home }}" class="logo"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" /></a>
+                                </div>
+                                <nav class="navigation">
+                                    <ul class="nav-links nav navbar-nav">
+                                        <li><a href="{{home}}" class="main-menu"><span class="text">{{text_home}}</span></a></li>
+                                        <li><a href="{{about}}" class="main-menu"><span class="text">{{text_about}}</span></a></li>
+                                        <li><a href="{{product}}" class="main-menu"><span class="text">{{text_products}}</span></a></li>
+                                        <li><a href="{{services}}" class="main-menu"><span class="text">{{text_services}}</span></a></li>
+                                        <li><a href="contact" class="main-menu"><span class="text">{{text_contact}}</span></a></li>                                    
+                                    </ul>
+                                    <div class="lg-holder">
+                                         <div class="language-menu"><a style="cursor:pointer"><span class="text">{{language}}</span></a></div>
+                                    </div>
+                                    <div class="lg-holder">
+                                        {% if logged %}
+                                            <a class="lg-reg" href="{{account}}">{{customerName}}</a> 
+                                        {% else %}
+                                            <a class="lg-reg" href="{{login}}">{{text_login_register}}</a> {% endif %}
+                                    </div>                                    
+                                    {{ cart }}
+                                    <div class="nav-search hide">
+                                        <form>
+                                            <input type="text" placeholder="Search" class="searchbox" />
+                                            <button type="submit" class="searchbutton fa fa-search"></button>
+                                        </form>
+                                    </div>
+                                </nav>
+                                <div class="button-search-mobile"><i class="icons fa fa-search"></i></div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
