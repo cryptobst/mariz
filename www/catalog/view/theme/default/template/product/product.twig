@@ -50,8 +50,9 @@
                             </ul>
                             {% endif %}
                             <div id="product"> {% if options %}
-                                <hr>
-                                <h3>{{ text_option }}</h3> {% for option in options %} {% if option.type == 'select' %}
+                                <hr style="display:none;">
+                                <h3 style="display:none;">{{ text_option }}</h3>
+                                <div style="display:none;"> {% for option in options %} {% if option.type == 'select' %}
                                 <div class="form-group{% if option.required %} required {% endif %}">
                                     <label class="control-label" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>
                                     <select name="option[{{ option.product_option_id }}]" id="input-option{{ option.product_option_id }}" class="form-control">
@@ -124,7 +125,8 @@
                     <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
                     </span></div>
                                 </div>
-                                {% endif %} {% endfor %} {% endif %} {% if recurrings %}
+                                {% endif %} {% endfor %} </div>
+                                {% endif %} {% if recurrings %}
                                 <hr>
                                 <h3>{{ text_payment_recurring }}</h3>
                                 <div class="form-group required">
@@ -137,7 +139,7 @@
                                     <div class="help-block" id="recurring-description"></div>
                                 </div>
                                 {% endif %}
-                                <div class="form-group">
+                                <div class="form-group" style="display:none;">
                                     <label class="control-label" for="input-quantity" style="margin: 0 10px 0 0;">{{ entry_qty }} :</label>
                                     <input type="text" name="quantity" value="{{ minimum }}" size="2" id="input-quantity" class="form-control" />
                                     <input type="hidden" name="product_id" value="{{ product_id }}" />

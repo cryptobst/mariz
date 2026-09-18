@@ -105,6 +105,7 @@
                                     <a href="{{ home }}" class="logo"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" /></a>
                                 </div>
                                 <nav class="navigation">
+                                    {% if class != 'home' %}
                                     <ul class="nav-links nav navbar-nav">
                                         <li><a href="{{home}}" class="main-menu"><span class="text">{{text_home}}</span></a></li>
                                         <li><a href="{{about}}" class="main-menu"><span class="text">{{text_about}}</span></a></li>
@@ -112,22 +113,19 @@
                                         <li><a href="{{services}}" class="main-menu"><span class="text">{{text_services}}</span></a></li>
                                         <li><a href="contact" class="main-menu"><span class="text">{{text_contact}}</span></a></li>                                    
                                     </ul>
+                                    {% endif %}
+                                    {% if class != 'home' %}
                                     <div class="lg-holder">
                                          <div class="language-menu"><a style="cursor:pointer"><span class="text">{{language}}</span></a></div>
                                     </div>
-                                    <div class="lg-holder">
-                                        {% if logged %}
-                                            <a class="lg-reg" href="{{account}}">{{customerName}}</a> 
-                                        {% else %}
-                                            <a class="lg-reg" href="{{login}}">{{text_login_register}}</a> {% endif %}
-                                    </div>                                    
-                                    {{ cart }}
+
                                     <div class="nav-search hide">
                                         <form>
                                             <input type="text" placeholder="Search" class="searchbox" />
                                             <button type="submit" class="searchbutton fa fa-search"></button>
                                         </form>
                                     </div>
+                                    {% endif %}
                                 </nav>
                                 <div class="button-search-mobile"><i class="icons fa fa-search"></i></div>
                                 <div class="clearfix"></div>
