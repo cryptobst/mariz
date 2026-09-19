@@ -1822,6 +1822,19 @@ ul {
     color: #222222;
 }
 
+.footer-left .hyperlink .wexgroup-logo {
+    display: inline-block;
+    height: 16px;
+    width: auto;
+    margin: 0 4px;
+    vertical-align: middle;
+}
+
+.footer-left:hover .hyperlink,
+.footer-left:hover .hyperlink .text {
+    color: #ffffff;
+}
+
 .footer-right {
     position: relative;
     z-index: 1;
