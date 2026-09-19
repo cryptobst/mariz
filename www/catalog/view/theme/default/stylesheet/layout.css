@@ -1824,14 +1824,15 @@ ul {
 
 .footer-left .hyperlink .wexgroup-logo {
     display: inline-block;
-    height: 16px;
     width: auto;
     margin: 0 4px;
     vertical-align: middle;
 }
 
 .footer-left:hover .hyperlink,
-.footer-left:hover .hyperlink .text {
+.footer-left:hover .hyperlink .text,
+.footer-left:hover .hyperlink a,
+.footer-left:hover .hyperlink a:hover {
     color: #ffffff;
 }
 
