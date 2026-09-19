@@ -69,12 +69,6 @@
                 <li><a href="{{product}}" class="main-menu"><span class="text">{{text_products}}</span></a></li>
                 <li><a href="{{services}}" class="main-menu"><span class="text">{{text_services}}</span></a></li>
                 <li><a href="contact" class="main-menu"><span class="text">{{text_contact}}</span></a></li>                               
-                <li>
-                    {% if logged %}
-                        <a class="main-menu" href="{{account}}">{{customerName}}</a> 
-                    {% else %}
-                        <a class="main-menu" href="{{login}}">{{text_login_register}}</a> {% endif %}
-                </li>           
                 <li><div class="language-menu"><a class="main-menu" style="cursor:pointer">{{language}}</a></div></li> 
             </ul>
         </div>

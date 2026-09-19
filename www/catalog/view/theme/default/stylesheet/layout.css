@@ -1324,6 +1324,12 @@ ul {
     margin-bottom: 0;
 }
 
+.mb-nav .language-menu {
+    display: inline-block;
+    width: auto;
+    top: 0;
+}
+
 .mb-nav .main-menu {
     font-family: 'Comfortaa', cursive;
     font-size: 20px;
