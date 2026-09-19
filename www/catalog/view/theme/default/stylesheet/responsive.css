@@ -714,7 +714,14 @@
     .homepage-hover .left-banner .homepage-content {
         margin-right: 15px;
         margin-left: 15px;
-        padding-top: 100px;
+        padding-top: 30px;
+    }
+    .homepage-hover .left-banner .logo {
+        position: static;
+        top: auto;
+        left: auto;
+        display: block;
+        margin-bottom: 20px;
     }
     .homepage-hover .left-banner .title {
         font-size: 3.6rem;
