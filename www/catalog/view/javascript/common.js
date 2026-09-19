@@ -101,6 +101,20 @@ $(document).ready(function() {
         $('#form-currency').submit();
     });
 
+    // Language (mobile menu: click to toggle instead of hover)
+    $(document).on('click', '.mb-nav .language-menu > a', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        $(this).closest('.language-menu').toggleClass('lang-open');
+    });
+
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest('.mb-nav .language-menu').length) {
+            $('.mb-nav .language-menu').removeClass('lang-open');
+        }
+    });
+
     // Language
     $(document).on('click', '.language-select', function(e) {
         console.log('click');
