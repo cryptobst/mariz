@@ -19,7 +19,7 @@
                             <div class="overlay featuredMenu"  style="cursor:pointer">
                                 <a href="{{ product.href }}" class="overlay-anchor"></a>
                                 <h4 class="text-center" style="margin-top: 25%;"><a href="{{ product.href }}">{{ product.name }}</a></h4>
-                                <p class="text-center" class="price">
+                                <p class="text-center" class="price" style="display:none;">
                                     {% if not product.special %} {{ product.price }} {% else %}
                                     <span class="price"><a href="{{ product.href }}">
                                         <ins>{{ product.special }}</ins>
@@ -27,7 +27,7 @@
                                         </a>               
                                     </span> {% endif %}
                                 </p>
-                                <div class="text-center">
+                                <div class="text-center" style="display:none;">
                                     <button style="margin-left: 0;" type="button" class="add-to-cart-btn" onclick="cart.add('{{ product.product_id }}', '{{ product.minimum }}');"><i class="fa fa-shopping-cart"></i></button>
                                 </div>
                             </div>
